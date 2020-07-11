@@ -1,0 +1,28 @@
+# Project: msc
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o
+LINKOBJ  = main.o
+LIBS     = -L"F:/mscproj/mscmingw/lib" -L"../SFML/lib" -mwindows -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -lsfml-audio
+INCS     = -I"F:/mscproj/mscmingw/include" -I"../SFML/include"
+CXXINCS  = -I"F:/mscproj/mscmingw/include" -I"../SFML/include"
+BIN      = msc.exe
+CXXFLAGS = $(CXXINCS) -finput-charset=GBK
+CFLAGS   = $(INCS) -finput-charset=GBK
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
